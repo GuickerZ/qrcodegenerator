@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
@@ -9,11 +8,6 @@ app.use(express.json());
 app.use(cors({origin: "*"}))
 app.post('/generateQRCode', async (req, res) => {
   const url = 'https://api.qrcode-monkey.com//qr/custom';
-  app.use(express.static(path.join(__dirname, 'public')));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
   try {
     const response = await axios.post(url, req.body);
     res.json({ imageUrl: response.data.imageUrl });

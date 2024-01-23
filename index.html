@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QRCode Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="py-5">
+    <h1>Lucky System | QRCode Generator</h1>
+    <div class="mb-3">
+    <label for="logourl" class="form-label">Digite a URL da imagem para QRCode:</label>
+    <input type="text" class="form-control" id="logourl" aria-describedby="help">
+    <div id="help" class="form-text">Caso não queira, só deixar em branco.</div>
+</div>
+    <p>Escolha o tipo de corpo do QRCode:</p>
+    <div class="body container d-flex flex-wrap">
+      <div class="d-flex flex-column align-items-center align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="square" autocomplete="off" checked>
+          <label class="btn" for="square"><img src="https://www.qrcode-monkey.com/img/qr/body/square.png"></label>
+        </div>
+        <p>square</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="mosaic" autocomplete="off">
+          <label class="btn" for="mosaic"><img src="https://www.qrcode-monkey.com/img/qr/body/mosaic.png"></label>
+        </div>
+        <p>mosaic</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="dot" autocomplete="off">
+          <label class="btn" for="dot"><img src="https://www.qrcode-monkey.com/img/qr/body/dot.png"></label>
+        </div>
+        <p>dot</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="circle" autocomplete="off">
+          <label class="btn" for="circle"><img src="https://www.qrcode-monkey.com/img/qr/body/circle.png"></label>
+        </div>
+        <p>circle</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="circle-zebra" autocomplete="off">
+          <label class="btn" for="circle-zebra"><img src="https://www.qrcode-monkey.com/img/qr/body/circle-zebra.png"></label>
+        </div>
+        <p>circle-zebra</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="circle-zebra-vertical" autocomplete="off">
+          <label class="btn" for="circle-zebra-vertical"><img src="https://www.qrcode-monkey.com/img/qr/body/circle-zebra-vertical.png"></label>
+        </div>
+      <p>circle-zebra-vertical</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="circular" autocomplete="off">
+          <label class="btn" for="circular"><img src="https://www.qrcode-monkey.com/img/qr/body/circular.png"></label>
+        </div>
+      <p>circular</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="edge-cut" autocomplete="off">
+          <label class="btn" for="edge-cut"><img src="https://www.qrcode-monkey.com/img/qr/body/edge-cut.png"></label>
+        </div>
+      <p>edge-cut</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="edge-cut-smooth" autocomplete="off">
+          <label class="btn" for="edge-cut-smooth"><img src="https://www.qrcode-monkey.com/img/qr/body/edge-cut-smooth.png"></label>
+        </div>
+      <p>edge-cut-smooth</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="jpanese" autocomplete="off">
+          <label class="btn" for="japnese"><img src="https://www.qrcode-monkey.com/img/qr/body/japnese.png"></label>
+        </div>
+      <p>jpanese</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="leaf" autocomplete="off">
+          <label class="btn" for="leaf"><img src="https://www.qrcode-monkey.com/img/qr/body/leaf.png"></label>
+        </div>
+      <p>leaf</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="pointed" autocomplete="off">
+          <label class="btn" for="pointed"><img src="https://www.qrcode-monkey.com/img/qr/body/pointed.png"></label>
+        </div>
+      <p>pointed</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="pointed-edge-cut" autocomplete="off">
+          <label class="btn" for="pointed-edge-cut"><img src="https://www.qrcode-monkey.com/img/qr/body/pointed-edge-cut.png"></label>
+        </div>
+      <p>pointed-edge-cut</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="pointed-in" autocomplete="off">
+          <label class="btn" for="pointed-in"><img src="https://www.qrcode-monkey.com/img/qr/body/pointed-in.png"></label>
+        </div>
+      <p>pointed-in</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="pointed-in-smooth" autocomplete="off">
+          <label class="btn" for="pointed-in-smooth"><img src="https://www.qrcode-monkey.com/img/qr/body/pointed-in-smooth.png"></label>
+        </div>
+      <p>pointed-in-smooth</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="pointed-smooth" autocomplete="off">
+          <label class="btn" for="pointed-smooth"><img src="https://www.qrcode-monkey.com/img/qr/body/pointed-smooth.png"></label>
+        </div>
+      <p>pointed-smooth</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="round" autocomplete="off">
+          <label class="btn" for="round"><img src="https://www.qrcode-monkey.com/img/qr/body/round.png"></label>
+        </div>
+      <p>round</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="rounded-in" autocomplete="off">
+          <label class="btn" for="rounded-in"><img src="https://www.qrcode-monkey.com/img/qr/body/rounded-in.png"></label>
+        </div>
+      <p>rounded-in</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="rounded-in-smooth" autocomplete="off">
+          <label class="btn" for="rounded-in-smooth"><img src="https://www.qrcode-monkey.com/img/qr/body/rounded-in-smooth.png"></label>
+        </div>
+      <p>rounded-in-smooth</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="rounded-pointed" autocomplete="off">
+          <label class="btn" for="rounded-pointed"><img src="https://www.qrcode-monkey.com/img/qr/body/rounded-pointed.png"></label>
+        </div>
+      <p>rounded-pointed</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="star" autocomplete="off">
+          <label class="btn" for="star"><img src="https://www.qrcode-monkey.com/img/qr/body/star.png"></label>
+        </div>
+      <p>star</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="body" id="diamond" autocomplete="off">
+          <label class="btn" for="diamond"><img src="https://www.qrcode-monkey.com/img/qr/body/diamond.png"></label>
+        </div>
+      <p>diamond</p>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-start flex-column">
+        <label for="body-color">Escolha a cor do corpo do QR Code:</label>
+        <div class="d-flex align-items-center container-fluid justify-content-start gap-3">
+          <input type="color" id="body-color" value="#000000">
+          <span id="body-color-value">#000000</span>
+        </div>
+    </div>
+    <hr>
+    <p>Escolha o tipo de olho do QRCode:</p>
+
+    <div class="eye container d-flex flex-wrap">
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame0" autocomplete="off" checked>
+          <label class="btn" for="frame0"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame0.png"></label>
+        </div>
+        <p>frame0</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame1" autocomplete="off">
+          <label class="btn" for="frame1"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame1.png"></label>
+        </div>
+        <p>frame1</p>
+      </div>
+      <!-- Repeat the structure for the other frames -->
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame2" autocomplete="off">
+          <label class="btn" for="frame2"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame2.png"></label>
+        </div>
+        <p>frame2</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame3" autocomplete="off">
+          <label class="btn" for="frame3"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame3.png"></label>
+        </div>
+        <p>frame3</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame4" autocomplete="off">
+          <label class="btn" for="frame4"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame4.png"></label>
+        </div>
+        <p>frame4</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame5" autocomplete="off">
+          <label class="btn" for="frame5"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame5.png"></label>
+        </div>
+        <p>frame5</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame6" autocomplete="off">
+          <label class="btn" for="frame6"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame6.png"></label>
+        </div>
+        <p>frame6</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame7" autocomplete="off">
+          <label class="btn" for="frame7"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame7.png"></label>
+        </div>
+        <p>frame7</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame8" autocomplete="off">
+          <label class="btn" for="frame8"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame8.png"></label>
+        </div>
+        <p>frame8</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame10" autocomplete="off">
+          <label class="btn" for="frame10"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame10.png"></label>
+        </div>
+        <p>frame10</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame11" autocomplete="off">
+          <label class="btn" for="frame11"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame11.png"></label>
+        </div>
+        <p>frame11</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame12" autocomplete="off">
+          <label class="btn" for="frame12"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame12.png"></label>
+        </div>
+        <p>frame12</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame13" autocomplete="off">
+          <label class="btn" for="frame13"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame13.png"></label>
+        </div>
+        <p>frame13</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame14" autocomplete="off">
+          <label class="btn" for="frame14"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame14.png"></label>
+        </div>
+        <p>frame14</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye" id="frame16" autocomplete="off">
+          <label class="btn" for="frame16"><img src="https://www.qrcode-monkey.com/img/qr/eye-frames/frame16.png"></label>
+        </div>
+        <p>frame16</p>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-start gap-3">
+      <label for="eye-color">Cor do tipo de olho do QR Code:</label>
+      <div class="d-flex gap-3 container-fluid align-items-center justify-content-start">
+        <input type="color" id="eye-color" value="#000000">
+        <span id="eye-color-value">#000000</span>
+      </div>
+    </div>
+    <hr>
+    <p>Escolha o tipo de bola do olho do QRCode:</p>
+    <div class="eye-ball container d-flex flex-wrap">
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball0" autocomplete="off" checked>
+          <label class="btn" for="ball0"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball0.png"></label>
+        </div>
+        <p>ball0</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball1" autocomplete="off">
+          <label class="btn" for="ball1"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball1.png"></label>
+        </div>
+        <p>ball1</p>
+      </div>
+      <!-- Repeat the structure for the other balls -->
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball2" autocomplete="off">
+          <label class="btn" for="ball2"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball2.png"></label>
+        </div>
+        <p>ball2</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball3" autocomplete="off">
+          <label class="btn" for="ball3"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball3.png"></label>
+        </div>
+        <p>ball3</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball5" autocomplete="off">
+          <label class="btn" for="ball5"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball5.png"></label>
+        </div>
+        <p>ball5</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball6" autocomplete="off">
+          <label class="btn" for="ball6"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball6.png"></label>
+        </div>
+        <p>ball6</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball7" autocomplete="off">
+          <label class="btn" for="ball7"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball7.png"></label>
+        </div>
+        <p>ball7</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball8" autocomplete="off">
+          <label class="btn" for="ball8"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball8.png"></label>
+        </div>
+        <p>ball8</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball10" autocomplete="off">
+          <label class="btn" for="ball10"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball10.png"></label>
+        </div>
+        <p>ball10</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball11" autocomplete="off">
+          <label class="btn" for="ball11"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball11.png"></label>
+        </div>
+        <p>ball11</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball12" autocomplete="off">
+          <label class="btn" for="ball12"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball12.png"></label>
+        </div>
+        <p>ball12</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball13" autocomplete="off">
+          <label class="btn" for="ball13"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball13.png"></label>
+        </div>
+        <p>ball13</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball14" autocomplete="off">
+          <label class="btn" for="ball14"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball14.png"></label>
+        </div>
+        <p>ball14</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball15" autocomplete="off">
+          <label class="btn" for="ball15"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball15.png"></label>
+        </div>
+        <p>ball15</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball16" autocomplete="off">
+          <label class="btn" for="ball16"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball16.png"></label>
+        </div>
+        <p>ball16</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball17" autocomplete="off">
+          <label class="btn" for="ball17"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball17.png"></label>
+        </div>
+        <p>ball17</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball18" autocomplete="off">
+          <label class="btn" for="ball18"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball18.png"></label>
+        </div>
+        <p>ball18</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <div>
+          <input type="radio" class="btn-check" name="eye-ball" id="ball19" autocomplete="off">
+          <label class="btn" for="ball19"><img src="https://www.qrcode-monkey.com/img/qr/eye-balls/ball19.png"></label>
+        </div>
+        <p>ball19</p>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-start gap-3 mb-5">
+      <label for="eye-ball-color">Cor do tipo de bola do QR Code:</label>
+      <div class="d-flex container-fluid justify-content-start align-items-center gap-3">
+        <input type="color" id="eye-ball-color" value="#000000">
+        <span id="eye-ball-color-value">#000000</span>
+      </div>
+    </div>
+    <hr>
+    <div class="container-fluid position-fixed bottom-0 p-3 start-0 bg-dark d-flex flex-column align-items-center justify-content-center">
+      <button onclick="generateQRCode()" data-bs-toggle="modal" data-bs-target="#exampleModal">Criar QRCode</button>
+    </div>
+    <form>
+    
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">QR Code Gerado:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="qrcode-container" class="d-flex justify-content-center h-100"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </main>
+
+
+<script>
+  document.getElementById('body-color').addEventListener('input', function(event) {
+  const colorValue = event.target.value;
+  document.getElementById('body-color-value').textContent = colorValue;
+});
+document.getElementById('eye-color').addEventListener('input', function(event) {
+  const colorValue = event.target.value;
+  document.getElementById('eye-color-value').textContent = colorValue;
+});
+document.getElementById('eye-ball-color').addEventListener('input', function(event) {
+  const colorValue = event.target.value;
+  document.getElementById('eye-ball-color-value').textContent = colorValue;
+});
+  const url = 'http://localhost:3000/generateQRCode';
+  let imageUrl;
+
+  function generateQRCode() {
+    const bodyType = document.querySelector('input[name="body"]:checked').id;
+const eyeType = document.querySelector('input[name="eye"]:checked').id;
+const eyeBallType = document.querySelector('input[name="eye-ball"]:checked').id;
+    const bodyColor = document.getElementById('body-color').value;
+    const eyeColor = document.getElementById('eye-color').value;
+    const eyeballColor = document.getElementById('eye-ball-color').value;
+    const logoUrl = document.getElementById('logourl').value;
+    
+    const qrcodeData = {
+      "data": "00020126420014br.gov.bcb.pix0120guicker172@gmail.com52040000530398654041.005802BR5917LUCKYSTOREDISCORD6009Sao Paulo62240520mpqrinter708982684796304F0B2", // Substitua pelo seu dado
+      "config": {
+        "body": bodyType,
+        "eye": eyeType,
+        "eyeBall": eyeBallType,
+        "bodyColor": bodyColor,
+        "eye1Color": eyeColor,
+        "eye2Color": eyeColor,
+        "eye3Color": eyeColor,
+        "eyeBall1Color": eyeballColor,
+        "eyeBall2Color": eyeballColor,
+        "eyeBall3Color": eyeballColor,
+      },
+      "size": 1000,
+      "download": "imageUrl",
+      "file": "png"
+    };
+    console.log(logoUrl)
+    if (logoUrl.trim() !== "") {
+        qrcodeData.config.logo = logoUrl;
+      }
+    axios.post(url, qrcodeData)
+      .then(response => {
+        imageUrl = response.data.imageUrl;
+        displayQRCode(imageUrl);
+      })
+      .catch(error => console.error('Erro ao gerar QRCode:', error));
+  }
+
+
+  function displayQRCode(imageUrl) {
+    const qrcodeContainer = document.getElementById('qrcode-container');
+    qrcodeContainer.innerHTML = `<img src="https:${imageUrl}" style="width:500px;" alt="QRCode">`;
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+</html>

@@ -4,16 +4,11 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
-
+const PORT2 = 80;
 app.use(express.json());
 app.use(cors({origin: "*"}))
 app.post('/generateQRCode', async (req, res) => {
   const url = 'https://api.qrcode-monkey.com//qr/custom';
-  app.use(express.static(path.join(__dirname, 'public')));
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
   try {
     const response = await axios.post(url, req.body);
     res.json({ imageUrl: response.data.imageUrl });
@@ -25,4 +20,11 @@ app.post('/generateQRCode', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(PORT2, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT2}`);
 });

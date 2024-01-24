@@ -19,12 +19,12 @@ app.post('/generateQRCode', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em https://qrcodegenerator-1n9b9wvy8-guickerz.vercel.app/${PORT}`);
+  console.log(`Servidor rodando em https://qrcodegenerator-1n9b9wvy8-guickerz.vercel.app:${PORT}/`);
 });
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT2, () => {
-  console.log(`Servidor rodando em https://qrcodegenerator-1n9b9wvy8-guickerz.vercel.app/${PORT2}`);
+  console.log(`Servidor rodando em https://qrcodegenerator-1n9b9wvy8-guickerz.vercel.app:${PORT2}/`);
 });

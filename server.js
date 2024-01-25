@@ -7,7 +7,7 @@ const PORT2 = 80;
 app.use(express.json());
 app.use(cors({origin: "*"}))
 app.post('/generateQRCode', async (req, res) => {
-  const url = 'https://api.qrcode-monkey.com//qr/custom';
+  const url = 'https://api.qrcode-monkey.com/qr/custom';
   try {
     const response = await axios.post(url, req.body);
     res.json({ imageUrl: response.data.imageUrl });

@@ -2,8 +2,10 @@
   "name": "sitefoda",
   "version": "1.0.0",
   "description": "",
+  "main": "server.js",
   "scripts": {
-  "start": "vercel"
+  "start": "node server.js",
+  "dev": "node server.js"
 },
   "keywords": [],
   "author": "",

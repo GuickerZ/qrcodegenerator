@@ -1,0 +1,13 @@
+{
+    "routes": [
+      {
+        "src": "/api/qrcode",
+        "dest": "https://api.qrcode-monkey.com/qr/custom"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/public/$1"
+      }
+    ]
+  }
+  

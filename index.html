@@ -529,7 +529,7 @@ document.getElementById('eye-ball-color').addEventListener('input', function(eve
   const colorValue = event.target.value;
   document.getElementById('eye-ball-color-value').textContent = colorValue;
 });
-  const url = '/api/proxy';
+  const url = 'http://localhost/generateQRCode';
   let imageUrl;
 
   function generateQRCode() {
